@@ -1,0 +1,3 @@
+$$$Videos_im_gleichen_Verzeichnis$$$
+$$$---Keine_GPS_Daten$$$
+$$$---Kein_Back_Button_auf_oberster_Ebene$$$
