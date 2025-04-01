@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<title>Hilfe zur Navigation in der Diashow</title>
+</head>
+<body>
+<table border="0" width="100%">
+  <tr>
+    <td><p align="left"><a href="index.htm"><big>zur&uuml;ck</big></a></p></td>
+    <td><h2 align="center">Hilfe f&uuml;r die Anzeige der Fotos der Bildergalerie</h2></td>
+  </tr>
+</table>
+<div class="container" id="myHelp">
+<table border="1" cellpadding="2" cellspacing="3" width="100%">
+  <tr>
+    <td><p align="left"><big>zur &Uuml;bersichtsseite</big></p><p align="left"><big>(positioniert auf aktuelles Bild)</big></p></td>
+    <td><p align="center"><big>zur &Uuml;bersichtsseite (oben) </big></p></td>
+    <td><p align="right"><big>anzeigen diese Hilfe</big></p></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><p align="left">&nbsp;</p><p align="left">&nbsp;</p><p align="left"><big>zum vorigen Bild&ast;</big></p><p align="left">&nbsp;</p><p align="left">&nbsp;</p></td>
+    <td rowspan="2">
+      <p align="center">&nbsp;</p>
+      <p align="center"><big>Umschalten Diashow (Wechsel 5 Sekunden)</p>
+      <p align="center">bzw. keine Diashow (Bildwechsel durch Anklicken links oder rechts)</p>
+      <p align="center">Bildwechsel durch Anklicken funktioniert auch in der Diashow</p>
+      <p align="center">&nbsp;</p>
+    </td>
+    <td>
+     <p align="right">&nbsp;</p>
+     <p align="right">&nbsp;</p>
+     <p align="right"><big>zum n&auml;chsten Bild&ast;</big></p>
+     <p align="right">&nbsp;</p>
+     <p align="right">&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p align="right"><big>Vollbild ein-<br>und ausschalten&ast;&ast;</big></p></td>
+  </tr>
+</table>
+<p><big>&ast;&nbsp;wischen nach links (voriges Bild) und rechts (n&auml;chstes Bild) funktioniert nur bei Touchscreens und aktiviertem Javascript</big></p>
+<p><big>&ast;&ast;&nbsp;funktioniert nur bei Touchscreens und aktiviertem Javascript, verh&auml;lt sich je Browser und Betriebssystem unterschiedlich, iOS unterst&uuml;tzt z.B. kein Vollbild im Browser</big></p>
+</div>
+<script>
+var swiper = { touchStartX: 0, touchEndX: 0, minSwipePixels: 30, detectionZone: undefined,
+swiperCallback: function() {},
+  init: function (detectionZone, callback) { swiper.swiperCallback = callback
+  detectionZone.addEventListener("touchstart", function (event) {
+    swiper.touchStartX = event.changedTouches[0].screenX; }, false);
+  detectionZone.addEventListener("touchend", function (event) {
+    swiper.touchEndX = event.changedTouches[0].screenX;
+    swiper.handleSwipeGesture(); }, false); },
+  handleSwipeGesture: function () {
+    if (swiper.touchEndX > swiper.touchStartX) { window.open("index.htm", "_self", openWindowParm) }
+  swipe: function (direction, movedPixels) { var ret = {}
+    ret.direction = direction, ret.movedPixels = movedPixels,  swiper.swiperCallback(ret) } };
+var gestureZone = document.getElementById("myHelp"); swiper.init(gestureZone, function(e) { });
+</script>
+</body>
+</html>
